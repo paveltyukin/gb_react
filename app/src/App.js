@@ -1,4 +1,3 @@
-import './App.css';
 import Message from './components/Message';
 
 const myMessageText = 'My message';

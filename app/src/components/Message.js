@@ -1,4 +1,3 @@
-
 function Message(props) {
   return (
     <div>
