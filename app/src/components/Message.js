@@ -1,8 +1,13 @@
 function Message(props) {
   return (
-    <div>
-      <span style={{ backgroundColor: 'red' }}>{ props.text }</span>
-    </div>
+    <>
+      <div>
+        <span style={{ backgroundColor: 'gray' }}>{ props.author }</span>
+        <br/>
+        <span style={{ backgroundColor: 'red' }}>{ props.message }</span>
+      </div>
+      <br/>
+    </>
   );
 }
 
