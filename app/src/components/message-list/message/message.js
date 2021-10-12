@@ -1,7 +1,7 @@
-import { PureComponent, memo } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import styles from "./message.module.css";
+import { memo } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import styles from './message.module.css';
 
 export const Message = memo(({ message }) => {
   const { author, value } = message;
@@ -9,7 +9,7 @@ export const Message = memo(({ message }) => {
   return (
     <div
       className={classNames(styles.message, {
-        [styles.currentMessage]: author === "User",
+        [styles.currentMessage]: author === 'User',
       })}
     >
       <h3>{value}</h3>

@@ -1,9 +1,9 @@
-import { Input, InputAdornment } from "@mui/material";
-import { Send } from "@mui/icons-material";
-import { createStyles, makeStyles } from "@mui/styles";
-import { useState, useEffect } from "react";
-import { Message } from "./message";
-import styles from "./message-list.module.css";
+import { Input, InputAdornment } from '@mui/material';
+import { Send } from '@mui/icons-material';
+import { createStyles, makeStyles } from '@mui/styles';
+import { useState, useEffect } from 'react';
+import { Message } from './message';
+import styles from './message-list.module.css';
 
 const useStyles = makeStyles((ctx) => {
   return createStyles({
@@ -13,7 +13,7 @@ const useStyles = makeStyles((ctx) => {
       fontSize: "15px",
     },
     wrapper: {
-      border: "1px solid red",
+      border: "1px solid black",
     },
   });
 });
@@ -39,13 +39,6 @@ export const MessageList = () => {
       handleSendMessage();
     }
   };
-
-  // const sort1 = () => {
-  //   setMessages([...messages].sort((a, b) => b.value.length - a.value.length));
-  // };
-  // const sort2 = () => {
-  //   setMessages([...messages].sort((a, b) => a.value.length - b.value.length));
-  // };
 
   useEffect(() => {
     const lastMessage = messages[messages.length - 1];
