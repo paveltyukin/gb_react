@@ -5,19 +5,23 @@ import { useParams } from "react-router-dom";
 export function MessageProvider({ children }) {
   const { roomId } = useParams();
   // ChatList передать value в дочерний инпут
-  const [conversations] = useState([
+  const [conversations, setConversations] = useState([
     { title: "room1", value: "input value 1" },
     { title: "room2", value: "input value 2" },
   ]);
   const [messages, setMessages] = useState({
-    room1: [{ value: "Room1", author: "Bot", id: new Date() }],
-    room2: [{ value: "Room2", author: "Bot", id: new Date() }],
+    room1: [{ value: "Room1", author: "Bot", id: Date.now() }],
+    room2: [{ value: "Room2", author: "Bot", id: Date.now() }],
   });
 
   const state = useMemo(() => {
+    const conversationValue = conversations.find((conversation) => {
+      return conversation.title === roomId;
+    });
+
     return {
       messages: messages[roomId] ?? [],
-      value: "", // придумать как получить значение текущей комнаты
+      value: conversationValue ? conversationValue.value : '',
       conversations,
       allMessages: messages,
     };
