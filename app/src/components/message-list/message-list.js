@@ -1,7 +1,7 @@
 import { Input, InputAdornment } from '@mui/material';
 import { Send } from '@mui/icons-material';
 import { createStyles, makeStyles } from '@mui/styles';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Message } from './message';
 import styles from './message-list.module.css';
 
@@ -23,13 +23,12 @@ export const MessageList = () => {
 
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState([
-    { value: "Hello", author: "User" },
-    { value: "Hello123", author: "Bot" },
+    { value: "Hello", author: "User", id: Date.now() },
   ]);
 
   const handleSendMessage = () => {
     if (value) {
-      setMessages((state) => [...state, { value, author: "User" }]);
+      setMessages((state) => [...state, { value, author: "User",  id: Date.now() }]);
       setValue("");
     }
   };
@@ -48,7 +47,7 @@ export const MessageList = () => {
       timerId = setTimeout(() => {
         setMessages((state) => [
           ...state,
-          { value: "Helloo from bot", author: "Bot" },
+          { value: "Hello from bot", author: "Bot", id: Date.now() },
         ]);
       }, 500);
     }
@@ -62,7 +61,7 @@ export const MessageList = () => {
     <div className={s.wrapper}>
       <div>
         {messages.map((message, id) => (
-          <Message key={message.value} message={message} />
+          <Message key={message.id} message={message} />
         ))}
       </div>
 
