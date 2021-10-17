@@ -1,31 +1,30 @@
-import ReactDOM from 'react-dom';
-import { ThemeProvider, createTheme } from '@mui/material';
-import React from 'react';
-import { MessageList, ChatList } from './components';
-import './global.css';
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material";
+import React from "react";
+import { ChatPage } from "./pages";
+import "./global.css";
 
-const dark = createTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  }
+const light = createTheme({
+  theme: {
+    color: "red",
+  },
 });
 
 ReactDOM.render(
-  <ThemeProvider theme={dark}>
-    <ChatList />
-    <MessageList />
-  </ThemeProvider>,
+  <BrowserRouter>
+    <ThemeProvider theme={light}>
+      <Switch>
+        <Route path="/chat">
+          <ChatPage />
+        </Route>
+
+        <Route path="*">
+          <h1>404 page</h1>
+          <Link to="/chat">go to Chat</Link>
+        </Route>
+      </Switch>
+    </ThemeProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
